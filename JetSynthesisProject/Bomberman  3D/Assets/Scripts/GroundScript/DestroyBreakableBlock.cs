@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// This class handles destroying of breakable blocks
 /// </summary>
-public class DestroyBreakableBlock : MonoBehaviour
+
+namespace JetSynthesis.BomberMan3D
 {
-    private void OnTriggerEnter(Collider other)
+    public class DestroyBreakableBlock : MonoBehaviour
     {
-        if (other.gameObject.GetComponent<DestroyMe>() != null)
+        // This method used for destroying brekable blocks
+        private void OnTriggerEnter(Collider other)
         {
-            Destroy(gameObject);
+            if (other.gameObject.GetComponent<DestroyMe>() != null)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -3,73 +3,95 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// This class handles bomb logic
 /// </summary>
-public class BombController : MonoBehaviour
+
+namespace JetSynthesis.BomberMan3D
 {
-    public GameObject explosionPrefab;
-    public float bombBlastTimer;
-    [SerializeField] private SphereCollider sphereCollider;
-    [SerializeField] private float bombStrength = 10;
-    public LayerMask levelMask;
-
-    // private void Start()
-    // {
-    //     Invoke("Explode", 3f);
-    // }    
-
-    private void Update()
+    public class BombController : MonoBehaviour
     {
-        TimeForNextBombPlaced();
-    }
-    private void TimeForNextBombPlaced()
-    {
-        bombBlastTimer -= Time.deltaTime;
-        if (bombBlastTimer <= 0.1f)
+        [SerializeField] private GameObject explosionPrefab;
+        [SerializeField] private SphereCollider sphereCollider;
+        [SerializeField] private float bombStrength = 3;
+        public float bombBlastTimer;
+        public LayerMask levelMask;
+
+        private void Update()
         {
-            Explode();
-            Destroy(this.gameObject);
+            TimeForNextBombPlaced();
         }
-    }
 
-    public void Explode()
-    {
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
-        StartCoroutine(CreateExplosions(Vector3.forward));
-        StartCoroutine(CreateExplosions(Vector3.right));
-        StartCoroutine(CreateExplosions(Vector3.back));
-        StartCoroutine(CreateExplosions(Vector3.left));
-
-        // GetComponent<MeshRenderer>().enabled = false; //2
-        // transform.Find("Collider").gameObject.SetActive(false); //3
-        // Destroy(gameObject, .3f); //4
-    }
-
-    private IEnumerator CreateExplosions(Vector3 direction)
-    {
-        for (int i = 1; i < bombStrength; i++)
+        // This method used for placing the bomb after some interval of time
+        private void TimeForNextBombPlaced()
         {
-            RaycastHit hit;
-            Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), direction, out hit, i, levelMask);
-
-            if (!hit.collider)
+            bombBlastTimer -= Time.deltaTime;
+            if (bombBlastTimer <= 0.1f)
             {
-                Instantiate(explosionPrefab, transform.position + (i * direction), Quaternion.identity);
+                Explode();
+                Destroy(gameObject);
             }
-            else
-            {
-                break;
-            }
-            yield return new WaitForSeconds(0.05f);
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<PlayerView>() != null)
+        // This method used for instantiating explosion Prefab at center and remaining four direction 
+        public void Explode()
         {
-            sphereCollider.isTrigger = false;
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+            StartCoroutine(CreateExplosions(Vector3.forward));
+            StartCoroutine(CreateExplosions(Vector3.right));
+            StartCoroutine(CreateExplosions(Vector3.back));
+            StartCoroutine(CreateExplosions(Vector3.left));
+        }
+
+        // This method used for creating explosion and avoid explosion when there is wall or unbreakable block
+        private IEnumerator CreateExplosions(Vector3 direction)
+        {
+            for (int i = 1; i < bombStrength; i++)
+            {
+                RaycastHit hit;
+                Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), direction, out hit, i, levelMask);
+
+                if (!hit.collider)
+                {
+                    Instantiate(explosionPrefab, transform.position + (i * direction), Quaternion.identity);
+                }
+                else
+                {
+                    break;
+                }
+                yield return new WaitForSeconds(0.05f);
+            }
+        }
+
+        // This method used for when player leaves after bomb spawning so it will make trigger false of a bomb
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.GetComponent<PlayerView>() != null)
+            {
+                sphereCollider.isTrigger = false;
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+// private void Start()
+// {
+//     Invoke("Explode", 3f);
+// } 
+
+
+// Explode() 
+// {
+
+//         // GetComponent<MeshRenderer>().enabled = false; //2
+//         // transform.Find("Collider").gameObject.SetActive(false); //3
+//         // Destroy(gameObject, .3f); //4
+// }

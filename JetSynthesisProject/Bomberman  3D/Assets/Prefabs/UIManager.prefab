@@ -45,5 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverPanel: {fileID: 0}
   YouWinPanel: {fileID: 0}
+  GamePausePanel: {fileID: 0}
   scoreText: {fileID: 0}
+  healthText: {fileID: 0}
   finalScoreText: {fileID: 0}
+  currentScene: GameScene
+  menuScene: LobbyScene

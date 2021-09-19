@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// This class handles audio of a game.
+/// This is singleton class handles all sounds in the game
 /// </summary>
-namespace Outscal.BasicUnity2DProject
+
+namespace JetSynthesis.BomberMan3D
 {
     public class SoundManager : MonoBehaviour
     {
@@ -32,17 +31,20 @@ namespace Outscal.BasicUnity2DProject
             }
         }
 
+        // In Start method, playing BG music from start with PlayMusic derived method
         private void Start()
         {
             SetVolume(volume / 2);
             PlayMusic(global::Sounds.Music);
         }
 
+        // In this method, checking status is it mute or not
         public void Mute(bool status)
         {
             isMute = status;
         }
 
+        // In this method, setting the volume
         public void SetVolume(float volume)
         {
             this.volume = volume;
@@ -50,6 +52,7 @@ namespace Outscal.BasicUnity2DProject
             soundMusic.volume = volume;
         }
 
+        // In PlayMusic method, getting sound clip check for null and calls Play() built in unity method
         public void PlayMusic(Sounds sound)
         {
             if (isMute)
@@ -69,6 +72,7 @@ namespace Outscal.BasicUnity2DProject
             }
         }
 
+        // In Play method, getting sound clip check for null and play with PlayOneShot() built in unity method
         public void Play(Sounds sound)
         {
             if (isMute)
@@ -87,6 +91,7 @@ namespace Outscal.BasicUnity2DProject
             }
         }
 
+        // In getSoundClip method, getting soundtypes in array and check for required sound and returns, else returns null
         private AudioClip getSoundClip(Sounds sound)
         {
             SoundType item = Array.Find(Sounds, i => i.soundType == sound);
@@ -97,18 +102,24 @@ namespace Outscal.BasicUnity2DProject
             return null;
         }
     }
-
-    [Serializable]
-    public class SoundType
-    {
-        public Sounds soundType;
-        public AudioClip soundClip;
-    }
 }
 
 /// <summary>
-/// 
+/// using SoundType Serializable class, for getting soundtype and sound clip from unity UI
 /// </summary>
+
+[Serializable]
+public class SoundType
+{
+    public Sounds soundType;
+    public AudioClip soundClip;
+}
+
+
+/// <summary>
+/// Using sounds enum for different music types
+/// </summary>
+
 public enum Sounds
 {
     buttonClick,

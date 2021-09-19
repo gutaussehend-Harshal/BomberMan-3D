@@ -3,28 +3,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// This class handles enemy spawning logic
 /// </summary>
-public class EnemySpawner : MonoSingletonGeneric<EnemySpawner>
+
+namespace JetSynthesis.BomberMan3D
 {
-    [SerializeField] private Transform[] spawnLocations;
-    [SerializeField] private GameObject[] whatToSpawnPrefab;
-
-    private void Start()
+    public class EnemySpawner : MonoSingletonGeneric<EnemySpawner>
     {
-        spawnOfEnemies();
-    }
+        [SerializeField] private Transform[] spawnLocations;
+        [SerializeField] private GameObject[] whatToSpawnPrefab;
 
-    // public int EnemyCount()
-    // {
-    //     return  whatToSpawnPrefab.Length;
-    // }
-
-    public void spawnOfEnemies()
-    {
-        for (int i = 0; i < spawnLocations.Length; i++)
+        private void Start()
         {
-            Instantiate(whatToSpawnPrefab[i], spawnLocations[i].transform.position, Quaternion.identity);
+            spawnOfEnemies();
+        }
+
+        // This method used for spawning enemies at different locations
+        public void spawnOfEnemies()
+        {
+            for (int i = 0; i < spawnLocations.Length; i++)
+            {
+                Instantiate(whatToSpawnPrefab[i], spawnLocations[i].transform.position, Quaternion.identity);
+            }
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// public int EnemyCount()
+// {
+//     return  whatToSpawnPrefab.Length;
+// }

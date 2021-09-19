@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7473588901326604316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -1.5}
+  m_LocalPosition: {x: 0, y: 1, z: -1}
   m_LocalScale: {x: 0.7, y: 0.5, z: 0.7}
   m_Children:
   - {fileID: 7081318742886790578}
@@ -157,5 +157,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bomb: {fileID: 58363591387889049, guid: 8321ec0ea562cce48b4de2a4d8466061, type: 3}
   canPlaceBomb: 1
-  playerTransform: {fileID: 7473588901326604312}
-  spawnPoint: {fileID: 7081318742886790578}
+  respawnPoint: {fileID: 6154979156682241608, guid: e8b32a1467f3e6e4eba803581575e77b,
+    type: 3}

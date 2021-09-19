@@ -2,9 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerScriptableObject", menuName = "ScriptableObject/Player/NewPlayerScriptableObject")]
-public class PlayerScriptableObject : ScriptableObject
+/// <summary>
+/// This class stores player data using scriptable object
+/// </summary>
+
+namespace JetSynthesis.BomberMan3D
 {
-    public float movementSpeed;
-    public PlayerView playerView;
+    [CreateAssetMenu(fileName = "PlayerScriptableObject", menuName = "ScriptableObject/Player/NewPlayerScriptableObject")]
+    public class PlayerScriptableObject : ScriptableObject
+    {
+        public int health;
+        public float movementSpeed;
+        public PlayerView playerView;
+    }
 }

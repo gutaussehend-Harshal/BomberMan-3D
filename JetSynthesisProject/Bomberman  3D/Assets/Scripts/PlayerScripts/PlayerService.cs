@@ -2,25 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerService : MonoSingletonGeneric<PlayerService>
+/// <summary>
+/// This class handles player service which inherites from MonoSingletonGeneric class
+/// </summary>
+
+namespace JetSynthesis.BomberMan3D
 {
-    private PlayerController playerController;
-    private PlayerModel playerModel;
-    [SerializeField] private PlayerScriptableObject playerScriptableObject;
-
-    public PlayerController GetPlayerController()
+    public class PlayerService : MonoSingletonGeneric<PlayerService>
     {
-        return playerController;
-    }
+        private PlayerController playerController;
+        private PlayerModel playerModel;
+        [SerializeField] private PlayerScriptableObject playerScriptableObject;
 
-    void Start()
-    {
-        CreatePlayer();
-    }
+        // This methode return playerController
+        public PlayerController GetPlayerController()
+        {
+            return playerController;
+        }
 
-    public void CreatePlayer()
-    {
-        playerModel = new PlayerModel(playerScriptableObject);
-        playerController = new PlayerController(playerScriptableObject.playerView, playerModel);
+        void Start()
+        {
+            CreatePlayer();
+        }
+
+        // This method used for create player
+        public void CreatePlayer()
+        {
+            playerModel = new PlayerModel(playerScriptableObject);
+            playerController = new PlayerController(playerScriptableObject.playerView, playerModel);
+        }
     }
 }

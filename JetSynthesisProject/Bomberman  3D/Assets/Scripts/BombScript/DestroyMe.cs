@@ -3,32 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
+/// This class handles explosion prefab
 /// </summary>
-public class DestroyMe : MonoBehaviour
+
+namespace JetSynthesis.BomberMan3D
 {
-    [SerializeField] private float delay = 0.5f;
-
-    void Start()
+    public class DestroyMe : MonoBehaviour
     {
-        Debug.Log("Destroy Successful");
-        Destroy(this.gameObject, delay);
-    }
+        [SerializeField] private float delay = 0.5f;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("UnbreakableBlock"))
+        // In this start method explosion will destroy after some delay
+        void Start()
         {
-            Destroy(this.gameObject);
+            Debug.Log("Destroy Successful");
+            Destroy(gameObject, delay);
         }
-        // if (other.gameObject.GetComponent<DestroyMe>() == null)
-        // {
-        //     Destroy(other.gameObject, 1f);
-        // }
-        // else if (other.gameObject.GetComponent<BombController>() != null)
-        // if (other.gameObject.GetComponent<BombController>() != null)
-        // {
-        //     other.gameObject.GetComponent<BombSpawner>().Explosion();
-        // }
+
+        // This method used for destroying explosion prefab when there is wall and unbreakable block
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("UnbreakableBlock"))
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
