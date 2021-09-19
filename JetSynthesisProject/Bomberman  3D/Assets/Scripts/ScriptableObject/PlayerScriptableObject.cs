@@ -11,6 +11,7 @@ namespace JetSynthesis.BomberMan3D
     [CreateAssetMenu(fileName = "PlayerScriptableObject", menuName = "ScriptableObject/Player/NewPlayerScriptableObject")]
     public class PlayerScriptableObject : ScriptableObject
     {
+        [Header("Player Settings")]
         public int health;
         public float movementSpeed;
         public PlayerView playerView;

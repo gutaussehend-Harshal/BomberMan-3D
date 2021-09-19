@@ -14,7 +14,7 @@ namespace JetSynthesis.BomberMan3D
         [SerializeField] private SphereCollider sphereCollider;
         [SerializeField] private float bombStrength = 3;
         public float bombBlastTimer;
-        public LayerMask levelMask;
+        [SerializeField] private LayerMask levelMask;
 
         private void Update()
         {
@@ -59,7 +59,7 @@ namespace JetSynthesis.BomberMan3D
                 {
                     break;
                 }
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.5f);
             }
         }
 
@@ -73,25 +73,3 @@ namespace JetSynthesis.BomberMan3D
         }
     }
 }
-
-
-
-
-
-
-
-
-
-// private void Start()
-// {
-//     Invoke("Explode", 3f);
-// } 
-
-
-// Explode() 
-// {
-
-//         // GetComponent<MeshRenderer>().enabled = false; //2
-//         // transform.Find("Collider").gameObject.SetActive(false); //3
-//         // Destroy(gameObject, .3f); //4
-// }

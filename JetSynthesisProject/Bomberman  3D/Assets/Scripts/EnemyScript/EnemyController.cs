@@ -11,6 +11,7 @@ namespace JetSynthesis.BomberMan3D
 {
     public class EnemyController : MonoBehaviour
     {
+        [Header("Enemy Settings")]
         [SerializeField] private float movementSpeed;
         [SerializeField] private LayerMask Walls;
         [SerializeField] private int score = 10;
@@ -18,11 +19,13 @@ namespace JetSynthesis.BomberMan3D
         private Rigidbody enemyRigidBody;
         private float currentTime = 0;
         private float changeDirectionTimer = 2f;
-        private static int enemiesDied;
+        public static int enemiesDied;
         private PlayerView playerView;
         private EnemyController enemyController;
+        [SerializeField] private int noOfEnemies = 5;
+        // public bool enemyDie = false;
 
-        void Start()
+        private void Start()
         {
             enemyRigidBody = gameObject.GetComponent<Rigidbody>();
             enemiesDied = 0;
@@ -130,18 +133,6 @@ namespace JetSynthesis.BomberMan3D
             }
         }
 
-        // This method used for after killing enemy it will update a score by 10 and it will show game win pannel after all enemies died
-        private void OnDestroy()
-        {
-            enemiesDied++;
-            UIManager.Instance.UpdateScore(score);
-
-            if (enemiesDied == 5)
-            {
-                UIManager.Instance.ShowWinScreen();
-            }
-        }
-
         // This method used for if enemy touches to an explosion prefab, the enemy will die
         private void OnTriggerEnter(Collider other)
         {
@@ -150,6 +141,19 @@ namespace JetSynthesis.BomberMan3D
                 Debug.Log("Enemy Destroy");
                 Destroy(gameObject);
             }
+        }
+
+        // This method used for after killing enemy it will update a score by 10 and it will show game win pannel after all enemies died
+        private void OnDestroy()
+        {
+            enemiesDied++;
+            EventService.Instance.InvokeOnScoreIncreased();
+
+            if (enemiesDied == noOfEnemies)
+            {
+                UIManager.Instance.ShowWinScreen();
+            }
+
         }
     }
 

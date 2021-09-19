@@ -5109,6 +5109,7 @@ GameObject:
   - component: {fileID: 243411842}
   - component: {fileID: 243411841}
   - component: {fileID: 243411840}
+  - component: {fileID: 243411843}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5181,6 +5182,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 66.9, y: 0, z: 0}
+--- !u!114 &243411843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243411839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec1d75bda817264ea8e0f6e1d15ef86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &248911994
 GameObject:
   m_ObjectHideFlags: 0
@@ -35832,7 +35845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -25}
+  m_AnchoredPosition: {x: -103.6, y: -25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1914470375
@@ -40535,6 +40548,11 @@ PrefabInstance:
       propertyPath: finalScoreText
       value: 
       objectReference: {fileID: 21696828}
+    - target: {fileID: 464731376837254569, guid: ab7b373ca15de9743819246d5df81065,
+        type: 3}
+      propertyPath: EnemyKilledpanel
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 464731376837254574, guid: ab7b373ca15de9743819246d5df81065,
         type: 3}
       propertyPath: m_RootOrder

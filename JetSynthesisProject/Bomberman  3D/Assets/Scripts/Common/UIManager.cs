@@ -12,9 +12,11 @@ namespace JetSynthesis.BomberMan3D
 {
     public class UIManager : MonoSingletonGeneric<UIManager>
     {
+        [Header("UI Settings")]
         [SerializeField] private GameObject GameOverPanel;
         [SerializeField] private GameObject YouWinPanel;
         [SerializeField] private GameObject GamePausePanel;
+        [SerializeField] private GameObject EnemyKilledpanel;
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI healthText;
         [SerializeField] private TextMeshProUGUI finalScoreText;
@@ -23,6 +25,22 @@ namespace JetSynthesis.BomberMan3D
         private static int score;
         public static int health;
         private bool paused = false;
+
+        private void OnEnable()
+        {
+            EventService.onScoreIncreased += ScoreUpdate;
+            // EventService.onScoreIncreased += UpdateHealth;
+        }
+
+        private void ScoreUpdate()
+        {
+            UpdateScore(10);
+        }
+
+        // private void UpdateHealth()
+        // {
+        //     UpdateHealth(10);
+        // }
 
         private void Start()
         {
@@ -55,8 +73,6 @@ namespace JetSynthesis.BomberMan3D
         {
             YouWinPanel.SetActive(false);
             GameOverPanel.SetActive(false);
-            PlayerService.Instance.GetPlayerController().PlayerDied();
-            PlayerService.Instance.CreatePlayer();
             EnemySpawner.Instance.spawnOfEnemies();
         }
 
@@ -118,6 +134,18 @@ namespace JetSynthesis.BomberMan3D
                 Time.timeScale = 0;
                 GamePausePanel.SetActive(true);
             }
+        }
+
+        public void EnemyKilledPanelPopUp()
+        {
+            Debug.Log("Deekha bhai");
+            EnemyKilledpanel.SetActive(true);
+        }
+
+        private void OnDisable()
+        {
+            EventService.onScoreIncreased -= ScoreUpdate;
+            // EventService.onHealthUpdate -= UpdateHealth;
         }
     }
 }

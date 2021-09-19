@@ -14,7 +14,7 @@ namespace JetSynthesis.BomberMan3D
         public static SoundManager Instance { get { return instance; } }
         [SerializeField] private AudioSource soundEffect;
         [SerializeField] private AudioSource soundMusic;
-        [SerializeField] private SoundType[] Sounds;
+        [SerializeField] private SoundType[] sounds;
         public bool isMute = false;
         public float volume = 1f;
 
@@ -94,7 +94,7 @@ namespace JetSynthesis.BomberMan3D
         // In getSoundClip method, getting soundtypes in array and check for required sound and returns, else returns null
         private AudioClip getSoundClip(Sounds sound)
         {
-            SoundType item = Array.Find(Sounds, i => i.soundType == sound);
+            SoundType item = Array.Find(sounds, i => i.soundType == sound);
             if (item != null)
             {
                 return item.soundClip;

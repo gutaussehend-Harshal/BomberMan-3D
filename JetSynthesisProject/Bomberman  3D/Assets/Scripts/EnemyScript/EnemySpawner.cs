@@ -10,6 +10,7 @@ namespace JetSynthesis.BomberMan3D
 {
     public class EnemySpawner : MonoSingletonGeneric<EnemySpawner>
     {
+        [Header("Spawning Settings")]
         [SerializeField] private Transform[] spawnLocations;
         [SerializeField] private GameObject[] whatToSpawnPrefab;
 
@@ -17,6 +18,16 @@ namespace JetSynthesis.BomberMan3D
         {
             spawnOfEnemies();
         }
+
+        // private void OnEnable()
+        // {
+        //     EnemyObserver.onEnemyKilled += EnemyKilled;
+        // }
+
+        // private void EnemyKilled()
+        // {
+        //     UIManager.Instance.EnemyKilledPanelPopUp();
+        // }
 
         // This method used for spawning enemies at different locations
         public void spawnOfEnemies()
@@ -26,6 +37,11 @@ namespace JetSynthesis.BomberMan3D
                 Instantiate(whatToSpawnPrefab[i], spawnLocations[i].transform.position, Quaternion.identity);
             }
         }
+
+        // private void OnDisable()
+        // {
+        //     EnemyObserver.onEnemyKilled -= EnemyKilled;
+        // }
     }
 }
 
@@ -40,8 +56,3 @@ namespace JetSynthesis.BomberMan3D
 
 
 
-
-// public int EnemyCount()
-// {
-//     return  whatToSpawnPrefab.Length;
-// }

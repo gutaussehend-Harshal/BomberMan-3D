@@ -113,11 +113,19 @@ namespace JetSynthesis.BomberMan3D
         private void PlayerRespawn()
         {
             UIManager.Instance.UpdateHealth(10);
+            // EventService.Instance.InvokeOnHealthUpdate();
+
             if (UIManager.health <= 0)
             {
                 playerController.PlayerDied();
             }
             transform.position = respawnPoint.position;
+        }
+
+        // This function used for player damage
+        public void TakeDamage(int damage)
+        {
+            UIManager.Instance.UpdateHealth(10);
         }
     }
 }
