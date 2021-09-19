@@ -59,18 +59,22 @@ namespace JetSynthesis.BomberMan3D
         //  This method used for restart the game
         public void OnClickRestartBtn()
         {
+            SoundManager.Instance.Play(Sounds.buttonClick);
             SceneManager.LoadScene(currentScene);
         }
 
         // This method used for go back to main menu
         public void OnClickMenuBtn()
         {
+            SoundManager.Instance.Play(Sounds.buttonClick);
             SceneManager.LoadScene(menuScene);
         }
 
         // This method used for loading a next level
         public void LoadNextRound()
         {
+            SoundManager.Instance.Play(Sounds.buttonClick);
+            SetUIValues();
             YouWinPanel.SetActive(false);
             GameOverPanel.SetActive(false);
             EnemySpawner.Instance.spawnOfEnemies();
@@ -79,12 +83,14 @@ namespace JetSynthesis.BomberMan3D
         // This method used for start the game
         public void OnClickStartBtn()
         {
+            SoundManager.Instance.Play(Sounds.buttonClick);
             SceneManager.LoadScene(currentScene);
         }
 
         // This method used for quit the game
         public void OnClickQuitBtn()
         {
+            SoundManager.Instance.Play(Sounds.buttonClick);
             Application.Quit();
         }
 
@@ -101,6 +107,7 @@ namespace JetSynthesis.BomberMan3D
         {
             if (YouWinPanel)
             {
+                SoundManager.Instance.Play(Sounds.LevelWin);
                 YouWinPanel.SetActive(true);
             }
         }
@@ -122,6 +129,7 @@ namespace JetSynthesis.BomberMan3D
         // This method used for pause the game
         public void OnClickPauseBtn()
         {
+            SoundManager.Instance.Play(Sounds.buttonClick);
             if (paused)
             {
                 paused = false;

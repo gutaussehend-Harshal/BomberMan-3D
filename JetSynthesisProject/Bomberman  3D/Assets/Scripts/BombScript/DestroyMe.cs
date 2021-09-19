@@ -17,6 +17,7 @@ namespace JetSynthesis.BomberMan3D
         {
             Debug.Log("Destroy Successful");
             Destroy(gameObject, delay);
+            SoundManager.Instance.Play(Sounds.Explosion);
         }
 
         // This method used for destroying explosion prefab when there is wall and unbreakable block
