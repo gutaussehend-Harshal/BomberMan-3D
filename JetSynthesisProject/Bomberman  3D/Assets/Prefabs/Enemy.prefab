@@ -108,11 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0c0cac23b574044980924449d5bdf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 3
   walls:
     serializedVersion: 2
     m_Bits: 256
-  score: 10
   noOfEnemies: 5
 --- !u!54 &8077783993999506097
 Rigidbody:
