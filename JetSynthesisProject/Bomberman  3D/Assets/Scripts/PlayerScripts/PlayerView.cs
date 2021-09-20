@@ -21,12 +21,11 @@ namespace JetSynthesis.BomberMan3D
         private bool damagable = false;
         [SerializeField] private Transform respawnPoint;
         private MeshRenderer meshRenderer;
-        private CapsuleCollider capsuleCollider;
+        
         private void Start()
         {
             meshRenderer = gameObject.GetComponent<MeshRenderer>();
             playerRigidbody = gameObject.GetComponent<Rigidbody>();
-            capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
         }
 
         private void Update()
@@ -115,8 +114,8 @@ namespace JetSynthesis.BomberMan3D
         private void PlayerRespawn()
         {
             SoundManager.Instance.Play(Sounds.playerDied);
-            EventService.Instance.InvokeOnHealthUpdate();
-            // UIManager.Instance.UpdateHealth(10);
+            // EventService.Instance.InvokeOnHealthUpdate();
+            UIManager.Instance.UpdateHealth(10);
             StartCoroutine(EnableDisableEffectToPlayer());
             if (UIManager.health <= 0)
             {
@@ -130,11 +129,9 @@ namespace JetSynthesis.BomberMan3D
         private IEnumerator EnableDisableEffectToPlayer()
         {
             meshRenderer.enabled = false;
-            capsuleCollider.isTrigger = false;
             yield return new WaitForSeconds(0.5f);
             meshRenderer.enabled = true;
             yield return new WaitForSeconds(1f);
-            capsuleCollider.isTrigger = true;
             meshRenderer.enabled = false;
             yield return new WaitForSeconds(1f);
             meshRenderer.enabled = true;
