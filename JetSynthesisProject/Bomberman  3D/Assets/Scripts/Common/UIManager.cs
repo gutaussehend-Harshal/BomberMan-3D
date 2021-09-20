@@ -29,7 +29,7 @@ namespace JetSynthesis.BomberMan3D
         private void OnEnable()
         {
             EventService.onScoreIncreased += ScoreUpdate;
-            // EventService.onScoreIncreased += UpdateHealth;
+            EventService.onScoreIncreased += UpdateHealth;
         }
 
         private void Start()
@@ -107,7 +107,7 @@ namespace JetSynthesis.BomberMan3D
         {
             if (playerWinPanel)
             {
-                SoundManager.Instance.Play(Sounds.LevelWin);
+                SoundManager.Instance.Play(Sounds.levelWin);
                 playerWinPanel.SetActive(true);
             }
         }

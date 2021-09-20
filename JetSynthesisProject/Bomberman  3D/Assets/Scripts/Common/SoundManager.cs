@@ -35,7 +35,7 @@ namespace JetSynthesis.BomberMan3D
         private void Start()
         {
             SetVolume(volume / 2);
-            PlayMusic(global::Sounds.Music);
+            PlayMusic(global::Sounds.music);
         }
 
         // In this method, checking status is it mute or not
@@ -122,9 +122,10 @@ public class SoundType
 
 public enum Sounds
 {
+    music,
+    levelWin,
+    levelLose,
+    explosion,
+    playerDied,
     buttonClick,
-    Music,
-    LevelWin,
-    LevelLose,
-    Explosion,
 }

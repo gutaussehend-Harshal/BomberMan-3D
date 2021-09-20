@@ -62,7 +62,7 @@ namespace JetSynthesis.BomberMan3D
             if (showGameOverScreen)
             {
                 UIManager.Instance.ShowGameOverScreen();
-                SoundManager.Instance.Play(Sounds.LevelLose);
+                SoundManager.Instance.Play(Sounds.levelLose);
             }
         }
     }

@@ -14,11 +14,10 @@ namespace JetSynthesis.BomberMan3D
         [Header("Enemy Settings")]
         [SerializeField] private float movementSpeed;
         [SerializeField] private LayerMask walls;
-        [SerializeField] private int score = 10;
         private Movement currentMovement = Movement.Right;
         private Rigidbody enemyRigidBody;
         private float currentTime = 0;
-        private float changeDirectionTimer = 2f;
+        private float changeDirectionTimer = 1f;
         public static int enemiesDied;
         private PlayerView playerView;
         private EnemyController enemyController;

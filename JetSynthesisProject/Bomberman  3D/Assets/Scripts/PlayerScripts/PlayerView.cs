@@ -19,11 +19,12 @@ namespace JetSynthesis.BomberMan3D
         [HideInInspector]
         public bool canPlaceBomb = true;
         private bool damagable = false;
-
         [SerializeField] private Transform respawnPoint;
+        private MeshRenderer meshRenderer;
 
         private void Start()
         {
+            meshRenderer = gameObject.GetComponent<MeshRenderer>();
             playerRigidbody = gameObject.GetComponent<Rigidbody>();
         }
 
@@ -112,14 +113,32 @@ namespace JetSynthesis.BomberMan3D
         // This function used for respawning of enemy after killed by explosion or enemy
         private void PlayerRespawn()
         {
-            UIManager.Instance.UpdateHealth(10);
+            SoundManager.Instance.Play(Sounds.playerDied);
             EventService.Instance.InvokeOnHealthUpdate();
-
+            UIManager.Instance.UpdateHealth(10);
+            StartCoroutine(EnableDisableEffectToPlayer());
             if (UIManager.health <= 0)
             {
                 playerController.PlayerDied();
             }
+
             transform.position = respawnPoint.position;
+        }
+
+        // This function used for providing enable-disable effect to player
+        private IEnumerator EnableDisableEffectToPlayer()
+        {
+            meshRenderer.enabled = false;
+            yield return new WaitForSeconds(0.5f);
+            meshRenderer.enabled = true;
+            yield return new WaitForSeconds(1f);
+            meshRenderer.enabled = false;
+            yield return new WaitForSeconds(1f);
+            meshRenderer.enabled = true;
+            yield return new WaitForSeconds(1f);
+            meshRenderer.enabled = false;
+            yield return new WaitForSeconds(1f);
+            meshRenderer.enabled = true;
         }
     }
 }
