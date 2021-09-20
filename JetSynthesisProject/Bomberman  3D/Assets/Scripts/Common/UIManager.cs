@@ -29,7 +29,7 @@ namespace JetSynthesis.BomberMan3D
         private void OnEnable()
         {
             EventService.onScoreIncreased += ScoreUpdate;
-            EventService.onScoreIncreased += UpdateHealth;
+            // EventService.onScoreIncreased += UpdateHealth;
         }
 
         private void Start()
@@ -51,10 +51,10 @@ namespace JetSynthesis.BomberMan3D
             UpdateScore(10);
         }
 
-        private void UpdateHealth()
-        {
-            UpdateHealth(10);
-        }
+        // private void UpdateHealth()
+        // {
+        //     UpdateHealth(10);
+        // }
 
         //  This method used for restart the game
         public void OnClickRestartBtn()
@@ -147,7 +147,7 @@ namespace JetSynthesis.BomberMan3D
         private void OnDisable()
         {
             EventService.onScoreIncreased -= ScoreUpdate;
-            EventService.onHealthUpdate -= UpdateHealth;
+            // EventService.onHealthUpdate -= UpdateHealth;
         }
     }
 }

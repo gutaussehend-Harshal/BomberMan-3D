@@ -7,7 +7,7 @@ namespace JetSynthesis.BomberMan3D
 {
     public class EventService : MonoSingletonGeneric<EventService>
     {
-        public static event Action onHealthUpdate;
+        // public static event Action onHealthUpdate;
         public static event Action onScoreIncreased;
 
         public void InvokeOnScoreIncreased()
@@ -15,9 +15,9 @@ namespace JetSynthesis.BomberMan3D
             onScoreIncreased?.Invoke();
         }
         
-        public void InvokeOnHealthUpdate()
-        {
-            onHealthUpdate?.Invoke();
-        }
+        // public void InvokeOnHealthUpdate()
+        // {
+        //     onHealthUpdate?.Invoke();
+        // }
     }
 }
