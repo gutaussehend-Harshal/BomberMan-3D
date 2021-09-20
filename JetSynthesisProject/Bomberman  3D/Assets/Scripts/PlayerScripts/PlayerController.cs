@@ -28,19 +28,19 @@ namespace JetSynthesis.BomberMan3D
 
             if (HorizontalMovement > 0)
             {
-                playerView.GetRigidBody().velocity = new Vector3(playerModel.movementSpeed, 0, 0);
+                playerView.GetRigidBody().velocity = new Vector3(playerModel.movementSpeed, 0f, 0f);
             }
             else if (HorizontalMovement < 0)
             {
-                playerView.GetRigidBody().velocity = new Vector3(-playerModel.movementSpeed, 0, 0);
+                playerView.GetRigidBody().velocity = new Vector3(-playerModel.movementSpeed, 0f, 0f);
             }
             else if (VerticalMovement > 0)
             {
-                playerView.GetRigidBody().velocity = new Vector3(0f, 0, playerModel.movementSpeed);
+                playerView.GetRigidBody().velocity = new Vector3(0f, 0f, playerModel.movementSpeed);
             }
             else if (VerticalMovement < 0)
             {
-                playerView.GetRigidBody().velocity = new Vector3(0f, 0, -playerModel.movementSpeed);
+                playerView.GetRigidBody().velocity = new Vector3(0f, 0f, -playerModel.movementSpeed);
             }
             else
             {

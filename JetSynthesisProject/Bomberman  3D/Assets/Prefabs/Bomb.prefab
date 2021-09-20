@@ -112,7 +112,7 @@ MonoBehaviour:
   sphereCollider: {fileID: 58363591345705957}
   bombStrength: 3
   bombBlastTimer: 3
-  levelMask:
+  layerMask:
     serializedVersion: 2
     m_Bits: 256
 --- !u!54 &-1131186623028143165

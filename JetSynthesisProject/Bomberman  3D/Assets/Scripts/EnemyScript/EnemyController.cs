@@ -13,7 +13,7 @@ namespace JetSynthesis.BomberMan3D
     {
         [Header("Enemy Settings")]
         [SerializeField] private float movementSpeed;
-        [SerializeField] private LayerMask Walls;
+        [SerializeField] private LayerMask walls;
         [SerializeField] private int score = 10;
         private Movement currentMovement = Movement.Right;
         private Rigidbody enemyRigidBody;
@@ -23,7 +23,6 @@ namespace JetSynthesis.BomberMan3D
         private PlayerView playerView;
         private EnemyController enemyController;
         [SerializeField] private int noOfEnemies = 5;
-        // public bool enemyDie = false;
 
         private void Start()
         {
@@ -67,7 +66,7 @@ namespace JetSynthesis.BomberMan3D
         // This method used for enemy movement in right direction
         private void MoveInRightDirection()
         {
-            var hitinfo = Physics.Raycast(transform.position, Vector3.right, 0.5f, Walls);
+            var hitinfo = Physics.Raycast(transform.position, Vector3.right, 0.5f, walls);
             if (hitinfo)
             {
                 while (currentMovement == Movement.Right)
@@ -84,7 +83,7 @@ namespace JetSynthesis.BomberMan3D
         // This method used for enemy movement in left direction
         private void MoveInLeftDirection()
         {
-            var hitinfo = Physics.Raycast(transform.position, Vector3.left, 0.5f, Walls);
+            var hitinfo = Physics.Raycast(transform.position, Vector3.left, 0.5f, walls);
             if (hitinfo)
             {
                 while (currentMovement == Movement.Left)
@@ -101,7 +100,7 @@ namespace JetSynthesis.BomberMan3D
         // This method used for enemy movement in forward direction
         private void MoveInForwardtDirection()
         {
-            var hitinfo = Physics.Raycast(transform.position, Vector3.forward, 0.5f, Walls);
+            var hitinfo = Physics.Raycast(transform.position, Vector3.forward, 0.5f, walls);
             if (hitinfo)
             {
                 while (currentMovement == Movement.Forward)
@@ -119,7 +118,7 @@ namespace JetSynthesis.BomberMan3D
         // This method used for enemy movement in backward direction
         private void MoveInBackDirection()
         {
-            var hitinfo = Physics.Raycast(transform.position, Vector3.back, 0.5f, Walls);
+            var hitinfo = Physics.Raycast(transform.position, Vector3.back, 0.5f, walls);
             if (hitinfo)
             {
                 while (currentMovement == Movement.Back)

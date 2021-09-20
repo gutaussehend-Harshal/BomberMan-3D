@@ -109,10 +109,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  Walls:
+  walls:
     serializedVersion: 2
     m_Bits: 256
   score: 10
+  noOfEnemies: 5
 --- !u!54 &8077783993999506097
 Rigidbody:
   m_ObjectHideFlags: 0

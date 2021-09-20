@@ -13,10 +13,9 @@ namespace JetSynthesis.BomberMan3D
     public class UIManager : MonoSingletonGeneric<UIManager>
     {
         [Header("UI Settings")]
-        [SerializeField] private GameObject GameOverPanel;
-        [SerializeField] private GameObject YouWinPanel;
-        [SerializeField] private GameObject GamePausePanel;
-        [SerializeField] private GameObject EnemyKilledpanel;
+        [SerializeField] private GameObject gameOverPanel;
+        [SerializeField] private GameObject playerWinPanel;
+        [SerializeField] private GameObject gamePausePanel;
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI healthText;
         [SerializeField] private TextMeshProUGUI finalScoreText;
@@ -26,21 +25,12 @@ namespace JetSynthesis.BomberMan3D
         public static int health;
         private bool paused = false;
 
+        // This finction is called when an object is enable
         private void OnEnable()
         {
             EventService.onScoreIncreased += ScoreUpdate;
             // EventService.onScoreIncreased += UpdateHealth;
         }
-
-        private void ScoreUpdate()
-        {
-            UpdateScore(10);
-        }
-
-        // private void UpdateHealth()
-        // {
-        //     UpdateHealth(10);
-        // }
 
         private void Start()
         {
@@ -54,6 +44,16 @@ namespace JetSynthesis.BomberMan3D
             health = 50;
             healthText.text = "Health: " + health.ToString();
             scoreText.text = "Score: " + score.ToString();
+        }
+
+        private void ScoreUpdate()
+        {
+            UpdateScore(10);
+        }
+
+        private void UpdateHealth()
+        {
+            UpdateHealth(10);
         }
 
         //  This method used for restart the game
@@ -75,8 +75,8 @@ namespace JetSynthesis.BomberMan3D
         {
             SoundManager.Instance.Play(Sounds.buttonClick);
             SetUIValues();
-            YouWinPanel.SetActive(false);
-            GameOverPanel.SetActive(false);
+            playerWinPanel.SetActive(false);
+            gameOverPanel.SetActive(false);
             EnemySpawner.Instance.spawnOfEnemies();
         }
 
@@ -97,7 +97,7 @@ namespace JetSynthesis.BomberMan3D
         // After player died, this method shows game over panel
         public void ShowGameOverScreen()
         {
-            GameOverPanel.SetActive(true);
+            gameOverPanel.SetActive(true);
             scoreText.gameObject.SetActive(false);
             finalScoreText.text = "Your Final Score is: " + score.ToString();
         }
@@ -105,10 +105,10 @@ namespace JetSynthesis.BomberMan3D
         // This method shows game win panel
         public void ShowWinScreen()
         {
-            if (YouWinPanel)
+            if (playerWinPanel)
             {
                 SoundManager.Instance.Play(Sounds.LevelWin);
-                YouWinPanel.SetActive(true);
+                playerWinPanel.SetActive(true);
             }
         }
 
@@ -134,26 +134,20 @@ namespace JetSynthesis.BomberMan3D
             {
                 paused = false;
                 Time.timeScale = 1;
-                GamePausePanel.SetActive(false);
+                gamePausePanel.SetActive(false);
             }
             else
             {
                 paused = true;
                 Time.timeScale = 0;
-                GamePausePanel.SetActive(true);
+                gamePausePanel.SetActive(true);
             }
-        }
-
-        public void EnemyKilledPanelPopUp()
-        {
-            Debug.Log("Deekha bhai");
-            EnemyKilledpanel.SetActive(true);
         }
 
         private void OnDisable()
         {
             EventService.onScoreIncreased -= ScoreUpdate;
-            // EventService.onHealthUpdate -= UpdateHealth;
+            EventService.onHealthUpdate -= UpdateHealth;
         }
     }
 }

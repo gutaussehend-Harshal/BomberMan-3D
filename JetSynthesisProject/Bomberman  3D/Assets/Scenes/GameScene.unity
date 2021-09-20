@@ -40540,6 +40540,11 @@ PrefabInstance:
       objectReference: {fileID: 2144038018}
     - target: {fileID: 464731376837254569, guid: ab7b373ca15de9743819246d5df81065,
         type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 2144038018}
+    - target: {fileID: 464731376837254569, guid: ab7b373ca15de9743819246d5df81065,
+        type: 3}
       propertyPath: GamePausePanel
       value: 
       objectReference: {fileID: 1350356598}
@@ -40548,6 +40553,16 @@ PrefabInstance:
       propertyPath: finalScoreText
       value: 
       objectReference: {fileID: 21696828}
+    - target: {fileID: 464731376837254569, guid: ab7b373ca15de9743819246d5df81065,
+        type: 3}
+      propertyPath: gamePausePanel
+      value: 
+      objectReference: {fileID: 1350356598}
+    - target: {fileID: 464731376837254569, guid: ab7b373ca15de9743819246d5df81065,
+        type: 3}
+      propertyPath: playerWinPanel
+      value: 
+      objectReference: {fileID: 1927373641}
     - target: {fileID: 464731376837254569, guid: ab7b373ca15de9743819246d5df81065,
         type: 3}
       propertyPath: EnemyKilledpanel

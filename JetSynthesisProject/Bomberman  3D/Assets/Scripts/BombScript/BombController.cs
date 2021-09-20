@@ -14,7 +14,8 @@ namespace JetSynthesis.BomberMan3D
         [SerializeField] private SphereCollider sphereCollider;
         [SerializeField] private float bombStrength = 3;
         public float bombBlastTimer;
-        [SerializeField] private LayerMask levelMask;
+        [Header("Layer Mask Settings")]
+        [SerializeField] private LayerMask layerMask;
 
         private void Update()
         {
@@ -49,7 +50,7 @@ namespace JetSynthesis.BomberMan3D
             for (int i = 1; i < bombStrength; i++)
             {
                 RaycastHit hit;
-                Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), direction, out hit, i, levelMask);
+                Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), direction, out hit, i, layerMask);
 
                 if (!hit.collider)
                 {

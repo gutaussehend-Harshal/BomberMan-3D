@@ -18,7 +18,7 @@ namespace JetSynthesis.BomberMan3D
         private float currentTime = 0f;
         [HideInInspector]
         public bool canPlaceBomb = true;
-        private bool Damagable = false;
+        private bool damagable = false;
 
         [SerializeField] private Transform respawnPoint;
 
@@ -30,10 +30,10 @@ namespace JetSynthesis.BomberMan3D
         private void Update()
         {
 
-            if (currentTime > notDamagableTime && !Damagable)
+            if (currentTime > notDamagableTime && !damagable)
             {
                 currentTime = 0;
-                Damagable = true;
+                damagable = true;
             }
             else
             {
@@ -76,7 +76,7 @@ namespace JetSynthesis.BomberMan3D
         // This method used for update player health and destroying player when player collides to explosion prefab
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<DestroyMe>() != null && Damagable)
+            if (other.gameObject.GetComponent<DestroyMe>() != null && damagable)
             {
                 PlayerRespawn();
             }
@@ -85,7 +85,7 @@ namespace JetSynthesis.BomberMan3D
         // This method used for update player health and destroying player when player collides to enemy
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.GetComponent<EnemyController>() != null && Damagable)
+            if (other.gameObject.GetComponent<EnemyController>() != null && damagable)
             {
                 PlayerRespawn();
             }
@@ -113,19 +113,13 @@ namespace JetSynthesis.BomberMan3D
         private void PlayerRespawn()
         {
             UIManager.Instance.UpdateHealth(10);
-            // EventService.Instance.InvokeOnHealthUpdate();
+            EventService.Instance.InvokeOnHealthUpdate();
 
             if (UIManager.health <= 0)
             {
                 playerController.PlayerDied();
             }
             transform.position = respawnPoint.position;
-        }
-
-        // This function used for player damage
-        public void TakeDamage(int damage)
-        {
-            UIManager.Instance.UpdateHealth(10);
         }
     }
 }

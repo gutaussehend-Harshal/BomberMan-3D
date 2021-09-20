@@ -19,16 +19,6 @@ namespace JetSynthesis.BomberMan3D
             spawnOfEnemies();
         }
 
-        // private void OnEnable()
-        // {
-        //     EnemyObserver.onEnemyKilled += EnemyKilled;
-        // }
-
-        // private void EnemyKilled()
-        // {
-        //     UIManager.Instance.EnemyKilledPanelPopUp();
-        // }
-
         // This method used for spawning enemies at different locations
         public void spawnOfEnemies()
         {
@@ -37,11 +27,6 @@ namespace JetSynthesis.BomberMan3D
                 Instantiate(whatToSpawnPrefab[i], spawnLocations[i].transform.position, Quaternion.identity);
             }
         }
-
-        // private void OnDisable()
-        // {
-        //     EnemyObserver.onEnemyKilled -= EnemyKilled;
-        // }
     }
 }
 
