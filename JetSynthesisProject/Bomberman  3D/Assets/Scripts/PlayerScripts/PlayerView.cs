@@ -114,7 +114,6 @@ namespace JetSynthesis.BomberMan3D
         private void PlayerRespawn()
         {
             SoundManager.Instance.Play(Sounds.playerDied);
-            // EventService.Instance.InvokeOnHealthUpdate();
             UIManager.Instance.UpdateHealth(10);
             StartCoroutine(EnableDisableEffectToPlayer());
             if (UIManager.health <= 0)
